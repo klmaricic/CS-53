@@ -1,0 +1,57 @@
+//PROGRAMMER: KELSEY MARICIC   DATE: 10/11/12
+//PROGRAM: assgn6.cpp
+//PURPOSE: Takes a value from the user and performs the requested calculations
+
+#include<iostream>
+using namespace std;
+#include "assgn6.h"
+
+int main()
+{
+  char option;
+  double mainNum, answer;
+  int exponentNum;
+  bool quit = false;
+  
+  greetings();
+  
+  do
+  {  
+    option = displayMenuAndGetOption();
+    option = validate(option);
+    
+    switch(option)
+    {
+      case '1':
+        mainNum = getMainNum();
+        mainNum = validate(mainNum);
+        break;
+       
+      case '2':
+        exponentNum = getExponentNum();
+        exponentNum = validate(exponentNum);
+        answer = calculateExponentN(mainNum, exponentNum);
+        displayAnswer(answer, option); 
+        break;
+           
+      case '3': 
+        exponentNum = getExponentNum();
+        exponentNum = validate(exponentNum);
+        answer = calculateRootN(mainNum, exponentNum);
+        displayAnswer(answer, option);
+        break;
+        
+      case '4':
+        answer = calculateExponentMainNum(mainNum);
+        displayAnswer(answer, option);
+        break;
+        
+      default:
+        quit = true;
+    }
+        
+  }while(!quit);
+  
+  goodbye();
+  return 0;
+}

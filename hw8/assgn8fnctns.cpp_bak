@@ -1,0 +1,109 @@
+//PROGRAMMER: Kelsey Maricic DATE: 11/4/11
+//PROGRAM: assgn8fnctns.cpp
+//PURPOSE: Simulates a madlib
+
+#include "assgn8.h"
+#include<iostream>
+#include<fstream>
+#include <stdio.h>
+#include <string.h>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+
+void greetings()
+{
+  cout<<endl<<"Hello. This program creates a madlib."<<endl<<endl;
+  return;
+}
+
+void printStory()
+{
+  ifstream fin("story.dat");
+  char lineOfStory[ARRAY_SIZE];
+
+  do
+  {
+    fin.getline(lineOfStory, ARRAY_SIZE-1, '\n');
+    cout<<lineOfStory<<endl;
+  } while(!fin.eof());
+
+  fin.close();
+  
+  return;
+}
+
+void replaceWords()
+{
+  char wordOfStory[ARRAY_SIZE];
+  char nounPArray[] = "*nounp*";
+  char nounSArray[] = "*nouns*";
+  char verbArray[] = "*verb*";
+  char adjectiveArray[] = "*adj*";
+  char verbPArray[] = "*verbp*";
+  
+  int index = 0, lineNum, numOfLines;
+  char letterOfStory;
+  ifstream finStory("story.dat"), finReplaceWords;      
+  ofstream fout;
+  
+  srand(time(NULL));
+  
+  while(finStory>>letterOfStory)
+  {
+    finStory.get(letterOfStory);
+    
+    if(letterOfStory == '*')
+    {
+      do
+      {
+        wordOfStory[index] = letterOfStory;
+        index++;
+        finStory.get(letterOfStory);
+      }while(letterOfStory != '*');
+      
+      wordOfStory[index] = letterOfStory;
+      
+      if(strcmp(wordOfStory, nounPArray) == 0)
+        finReplaceWords.open("nounp.dat");
+      
+      else if(strcmp(wordOfStory, nounSArray) == 0)
+        finReplaceWords.open("nouns.dat");
+      
+      else if(strcmp(wordOfStory, verbArray) == 0)
+        finReplaceWords.open("verb.dat");
+      
+      else if(strcmp(wordOfStory, adjectiveArray) == 0)
+        finReplaceWords.open("adjective.dat");
+      
+      else if(strcmp(wordOfStory, verbPArray) == 0)
+        finReplaceWords.open("verbp.dat");
+      
+        
+      finReplaceWords>>numOfLines;
+      lineNum = rand()%numOfLines;
+      for(int i = 0; i <lineNum; i++)
+        finReplaceWords.getline(wordOfStory, ARRAY_SIZE, '\n');
+          
+      finReplaceWords.get(letterOfStory);
+      while(letterOfStory != '\n')
+      {
+        finReplaceWords.putback(letterOfStory);
+        finReplaceWords.get(letterOfStory);
+      }                                                                                                           
+      
+      finReplaceWords.close();    
+    }
+    else
+      finStory.putback(letterOfStory);
+  }  
+     
+  finStory.close();
+  return;
+}
+
+
+void goodBye()
+{
+  cout<<"Thank you for using this program. Good bye!"<<endl;
+}

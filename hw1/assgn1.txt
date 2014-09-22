@@ -1,0 +1,67 @@
+Problem 1:
+  1. Given two numbers, the one you want to take a mod from is represented
+by 'a' and the one used to mod it by is 'b'. If b is greater than a, then
+the mod equals a and you are done. If not, divide a by b (a/b).
+  2. Take the resulting number from this division, which we'll call 'c', and
+then truncate it. This means that you only take the digits to the left of
+the decimal on c without rounding the number at all.
+  3. Multiply a and c together, the resulting number is 'd'.
+  4. Subtract d from a (a-d). The resulting number is the mod value.
+
+
+Problem 2:
+  1. If the string has already been marked in inch-long segments as a result
+of you already having implement the following steps on a previous occassion,
+then skip to step 11. If not, get a marker. Preferably a Sharpie.
+  2. Make sure the marker is of a color that will be crearly visible on the
+string. If not, repeat steps 1 and 2 with a different color of marker each
+time until you are successful.
+  3. Fold the string in half.
+  4. Make a mark with the marker at the fold of your string. This is the
+estimate of how long 4 inches is.
+  5. Grab the front tip of the string and bring it to the 4-inch mark,
+folding the portion in between in half.
+  6. Mark the new fold in the string in between the beginning of the string and
+the 4-inch mark. This indicates 2 inches.
+  7. Repeat steps 5 and 6 except fold the string from the tip to the 2-inch
+mark. The new mark in between is the 1-inch mark.
+  8. Repeat steps 5 through 7 but with the opposite end of the string. The
+first mark you make on this step represents 6-inches and the mark after that
+represents 7-inches.
+  9. Fold the 2-inch mark to the 4-inch mark. Mark the fold in between,
+which represents 3 inches.
+  10. Fold the 6-inch mark to the 4-inch mark. Mark the fold in between,
+which represents 5 inches.
+  11. If the object is 8 inches or less, just count the number of marks it
+extends to. That is how long it is. If the object is over halfway past one
+mark but doesn't reach the next mark, then you didn't do a very good job at
+marking the string and you should just round it up to the next mark. If it's
+less than halfway, then round down to the previous mark.  
+  12. For objects larger than 8 inches, put the string at the beginning of the
+object and then stretch it the 8 inches across the object to the end of the
+string.
+  13. While holding the end of the string that is 8 inches away from the
+beginning of the object, flip the other end over it so that the tip of the
+string touches 16 inches past the beginning of the object.
+  14.If the object does not extend past the point of the string (so the object
+is 16 inches or shorter), count the numbers of marks on the string that it
+expands across and then add 8 in to that number. That is the length of the
+object and you are done.
+  15. If it is longer than 16 inches, continue to flip the string, while
+counting how many times you flipped it (making sure to count in the very
+first flip you did). Do this until the object does not extend past the
+outside tip of the string. Multiply the number of flips you've done by 8 and
+then add how many inches past the inside tip of the string the object
+extends. Use the same rounding method described in step 11. This is the
+length of the object.
+
+
+Problem 3:
+  1.Have Roger place his one tentacle to the wall of coral on his right.
+  2. Follow that wall of coral without ever taking the tentacle off. So if
+the wall of coral folds right, Roger has to turn right with the wall of
+coral. If the wall of coral folds left, Roger must turn left.
+  3. Have Roger follow the wall of coral on his right and he will eventually
+reach the end of the maze.
+  4. Once he reaches the doctor's exit, go through it and go to the doctor's
+office.
